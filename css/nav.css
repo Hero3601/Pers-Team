@@ -8,7 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 }
 
 html {
@@ -50,7 +50,7 @@ html {
 }
 
 .menu-items {
-    width: 55%;
+    width: 60%;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -105,7 +105,7 @@ html {
     -webkit-user-select: none;
 }
 
-.menu-items > a {
+.menu-items > div > a {
     color: #dbdbdb;
     font-weight: bolder;
     border-bottom: 2px solid transparent;
@@ -121,13 +121,14 @@ html {
     -webkit-user-select: none;
 }
 
-.menu-items > a:hover {
+.menu-items > div > a:hover {
     transform: scale(1.1);
     text-shadow: 0 0 5px white;
     cursor: pointer;
+    transition: 0.3s ease-in-out;
 }
 
-.menu-items > a::after {
+.menu-items > div > a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -139,8 +140,28 @@ html {
     transition: width 0.3s ease;
 }
 
-.menu-items > a:hover::after {
+.menu-items > div > a:hover::after {
     width: 100%;
+}
+
+.menu-items > div {
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-items > div > span {
+    opacity: 0;
+    visibility: hidden;
+    color: white;
+    text-shadow: 0 0 2px white;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.menu-items > div > a:hover + span {
+    opacity: 1;
+    visibility: visible;
 }
 
 @media (max-width: 768px) {
@@ -150,7 +171,7 @@ html {
     }
 
     .menu-items {
-        width: 35%;
+        width: 40%;
         display: none;
         flex-direction: column;
         gap: 13px;
@@ -164,9 +185,23 @@ html {
         text-align: center;
     }
 
-    .menu-items > a {
+    .menu-items > div > a {
         margin: 0;
         padding: 8px;
+    }
+
+    .menu-items > div > span {
+        width: 0%;
+    }
+
+    .menu-items > div > a:hover + span {
+        visibility: hidden;
+        opacity: 0;
+        width: 0%;
+    }
+
+    .menu-items > div > a {
+        width: 100%;
     }
 
     .menu-items.show {
@@ -189,5 +224,34 @@ html {
 
     .cn-txt {
         font-size: 23px;
+    }
+}
+
+@media (max-width : 1024px) and (min-width : 770px) {
+
+    .menu-items > div {
+        gap: 0;
+    }
+    
+    .menu-items {
+        width: 70%;
+        gap: 0;
+    }
+    
+    .menu-items > div > span {
+        width: 0%;
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    .menu-items > div > a:hover + span {
+        width: 0%;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .menu-items > div > a {
+        width: 100%;
+        text-align: center;
     }
 }

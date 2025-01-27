@@ -9,7 +9,7 @@ function themetoggle() {
     const nav = document.querySelector(".nav-cont");
     if (toggle_btn.textContent === "Dark") {
         toggle_btn.textContent = "Light";
-        body_element.style.backgroundColor = "black";
+        body_element.style.backgroundColor = "#242323";
         nav.style.background = "linear-gradient(to bottom , #225e25 40% , #173d18)";
         localStorage.setItem("theme" , "light");
     } else {
@@ -28,7 +28,7 @@ function loadTheme() {
     if (savedTheme) {
         if (savedTheme === 'light') {
             toggle_btn.textContent = "Light";
-            body_element.style.backgroundColor = "black";
+            body_element.style.backgroundColor = "#242323";
         } else {
             toggle_btn.textContent = "Dark";
             body_element.style.backgroundColor = "white";
