@@ -1,5 +1,5 @@
 body {
-    background: white no-repeat center center fixed;
+    background: #FFBF78 no-repeat center center fixed;
     background-size: cover;
     font-family: Arial, sans-serif;
     height: 100%;
@@ -13,8 +13,7 @@ body {
 
 html {
     scrollbar-width: thin;
-    scrollbar-color: black white;
-    height: 100%;
+    scrollbar-color: #473c319c #574a3d52;
     margin: 0;
     padding: 0;
     display: flex;
@@ -31,11 +30,12 @@ html {
 }
 
 .nav-cont {
+    --bgc : #a4907c9c;
     align-self: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-image: linear-gradient(to bottom , #2E7D32 40% , #266629);
+    background-color: var(--bgc);
     border-radius: 40px;
     padding: 20px;
     gap: 25px;
@@ -45,7 +45,7 @@ html {
     position: sticky;
     top: 0;
     z-index: 10;
-    box-shadow: 0 0 30px #2E7D32;
+    box-shadow: 0 0 30px var(--bgc);
     transition: background-color 1s ease-in-out;
 }
 
@@ -96,7 +96,7 @@ html {
 .cn-txt {
     margin-right: auto;
     font-size: 30px;
-    color: white;
+    color: #ffffffad;
     font-weight: bolder;
     text-shadow: 0 0 6px white;
     user-select: none;
@@ -175,11 +175,11 @@ html {
         display: none;
         flex-direction: column;
         gap: 13px;
-        background-color: #147e40;
+        background-color: #a4907c71;
         padding: 10px;
         border-radius: 10px;
         position: absolute;
-        top: 75px;
+        top: 80px;
         right: 10px;
         z-index: 10;
         text-align: center;

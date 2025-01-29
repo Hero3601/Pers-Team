@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" href="imgs/faviocn.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/nav.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>𝙼𝚊𝚒𝚗 | 𝙿𝙸𝚃</title>
 </head>
 <body>
@@ -24,7 +24,7 @@
                 <span class="material-icons icon">groups</span>
             </div>
             <div>
-                <a href="linls/projects/index.html" class="projects">المشاريع</a>
+                <a href="links/projects/index.html" class="projects">المشاريع</a>
                 <span class="material-icons icon">assignment</span>
             </div>
             <div>
@@ -37,8 +37,17 @@
         </div>
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
     </div>
-
+    <!-- 𝙾𝚏𝚏 /  𝙾𝚗 -->
 
     <script src="js/script.js"></script>
+    <script>
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = `𝙼𝚊𝚒𝚗 | 𝙿𝙸𝚃  [𝙾𝚏𝚏]`;
+            } else {
+                document.title = "𝙼𝚊𝚒𝚗 | 𝙿𝙸𝚃  [𝙾𝚗]";
+            }
+        });
+    </script>
 </body>
 </html>
