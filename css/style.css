@@ -1,0 +1,83 @@
+body {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section {
+    width: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-in-out , transform 0.5s ease-in-out;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section > div {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+}
+
+.section > img {
+    width: 30%;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+    filter: brightness(1);
+    filter: drop-shadow(0 0 10px black);
+    transition: filter 0.5s ease-in-out;
+}
+
+.section > div > p {
+    color: black;
+    text-shadow: 0 0 6px black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    width: 70%;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    transition: 0.5s ease-in-out;
+}
+
+.section > div > .head {
+    font-size: 30px;
+}
+
+.section > div > .description {
+    font-size: 20px;
+}
+
+@media (max-width: 710px) {
+    .section {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-around;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .section > div > p {
+        width: 80vw;
+    }
+
+    .section > div > .head {
+        font-size: 19px;
+    }
+
+    .section > div > .description {
+        font-size: 15px;
+    }
+}

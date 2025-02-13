@@ -11,7 +11,7 @@
     <title>𝙼𝚊𝚒𝚗 | 𝙿𝙸𝚃</title>
 </head>
 <body>
-
+<div class="parent-of-all">
     <div class="nav-cont">
         <p class="cn-txt">𝗖𝗢𝗗𝗘 𝗩𝗘𝗥𝗦𝗘</p>
         <div class="menu-items">
@@ -37,6 +37,22 @@
         </div>
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
     </div>
+
+    <div class="section">
+        <img src="imgs/laptop.png" alt="Laptop Image" class="laptop_image">
+        <div class="wraper-of-p">
+            <p class="head">ابدأْ تَعَلُّمَ البَرْمَجَةِ</p>
+            <p class="description">ابدأ تعلم البرمجة هي العبارة التي تفتح لك أبواب عالم التكنولوجيا والإبداع. البرمجة ليست مجرد كتابة أكواد، بل هي لغة العصر الحديث التي تمكنك من حل المشكلات، بناء التطبيقات، وتحويل الأفكار إلى واقع. سواء كنت مبتدئًا أو محترفًا، فإن تعلم البرمجة يمنحك مهارات قيمة تفتح لك فرصًا لا حدود لها في سوق العمل. ابدأ رحلتك اليوم، واستكشف لغات مثل بايثون أو جافا سكربت، وكن جزءًا من ثورة التكنولوجيا التي تشكل مستقبلنا.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="links/footer/about-us/index.html">عننا</a>
+        <a href="links/footer/cwu/index.html">تواصل معنا</a>
+        <a href="links/projects/index.html">مشاريعنا</a>
+        <a href="links/footer/tsma/index.html">وسائل تواصل الفريق</a>
+    </div>
+</div>
     <!-- 𝙾𝚏𝚏 /  𝙾𝚗 -->
 
     <script src="js/script.js"></script>
@@ -48,6 +64,29 @@
                 document.title = "𝙼𝚊𝚒𝚗 | 𝙿𝙸𝚃  [𝙾𝚗]";
             }
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+        const fadeElements = document.querySelectorAll(".section");
+
+        const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible"); // Add class when visible
+                } else {
+                    entry.target.classList.remove("visible"); // Remove class when not visible (optional)
+                }
+            });
+        },
+        {
+            threshold: 0.5, // Trigger when 50% of the element is visible
+        }
+    );
+
+    fadeElements.forEach((element) => {
+        observer.observe(element); // Observe each element
+    });
+});
     </script>
 </body>
 </html>
