@@ -17,8 +17,8 @@ function themetoggle() {
     const font_color_dark = "black";
     const font_color_light = "white";
     const laptop_image = document.querySelector(".laptop_image");
-    const media_query = window.matchMedia("(max-width: 768px)");
     const menu_items = document.querySelector(".menu-items");
+    const html_element = document.documentElement;
 
     if (toggle_btn.textContent === "Dark") {
         toggle_btn.textContent = "Light";
@@ -32,13 +32,10 @@ function themetoggle() {
             element.style.color = font_color_light;
             element.style.textShadow = `0 0 6px white`;
         }
-        if (media_query.matches) {
-            menu_items.style.backgroundColor = "#1d1d1daf";
-        }
-        else {
-            menu_items.style.backgroundColor = "transparent"
-        }
         laptop_image.style.filter = "drop-shadow(0 0 10px white)";
+        html_element.classList.remove("light-theme");
+        html_element.classList.add("dark-theme");
+        updateMenuBackgroundColor("dark"); // Update menu background color
         localStorage.setItem("bgc", dark_color);
         localStorage.setItem("theme", "dark");
         localStorage.setItem("nav_bgc", dark_nav_bgc);
@@ -54,14 +51,10 @@ function themetoggle() {
             element.style.color = font_color_dark;
             element.style.textShadow = `0 0 6px black`;
         }
-        if (media_query.matches) {
-            menu_items.style.transition = "1s ease-in-out";
-            menu_items.style.backgroundColor = "#2e59889a";
-        }
-        else {
-
-        }
         laptop_image.style.filter = "drop-shadow(0 0 10px black)";
+        html_element.classList.remove("dark-theme");
+        html_element.classList.add("light-theme");
+        updateMenuBackgroundColor("light"); // Update menu background color
         localStorage.setItem("bgc", white_color);
         localStorage.setItem("theme", "light");
         localStorage.setItem("nav_bgc", light_nav_bgc);
@@ -80,6 +73,8 @@ function loadTheme() {
     const wraper_of_p = document.getElementsByClassName("wraper-of-p")[0];
     const intro_p_elements = wraper_of_p ? wraper_of_p.getElementsByTagName("*") : [];
     const laptop_image = document.querySelector(".laptop_image");
+    const menu_items = document.querySelector(".menu-items");
+    const html_element = document.documentElement;
 
     if (savedTheme) {
         if (savedTheme === 'dark') {
@@ -90,24 +85,30 @@ function loadTheme() {
             nav.style.backgroundColor = savedNavBGC;
             nav.style.borderBottom = "0 solid transparent";
             nav.style.boxShadow = "0 0 0 transparent";
+            html_element.classList.remove("light-theme");
+            html_element.classList.add("dark-theme");
             for (let element of intro_p_elements) {
                 element.style.color = "white";
                 element.style.textShadow = `0 0 6px white`;
             }
             laptop_image.style.filter = "drop-shadow(0 0 10px white)";
+            updateMenuBackgroundColor("dark"); // Update menu background color
         } else {
             toggle_btn.textContent = "Dark";
             toggle_btn.style.color = "black";
             toggle_btn.style.backgroundColor = "white";
             body_element.style.backgroundColor = white_color;
             nav.style.backgroundColor = savedNavBGC;
-            nav.style.borderBottom = `6 solid ${border_bottom_color_nav}`;
+            nav.style.borderBottom = `6px solid ${border_bottom_color_nav}`;
             nav.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
+            html_element.classList.remove("dark-theme");
+            html_element.classList.add("light-theme");
             for (let element of intro_p_elements) {
                 element.style.color = "black";
                 element.style.textShadow = `0 0 6px black`;
             }
             laptop_image.style.filter = "drop-shadow(0 0 10px black)";
+            updateMenuBackgroundColor("light"); // Update menu background color
         }
     } else {
         toggle_btn.textContent = "Dark";
@@ -120,10 +121,31 @@ function loadTheme() {
             element.style.textShadow = `0 0 6px black`;
         }
         laptop_image.style.filter = "drop-shadow(0 0 10px black)";
+        updateMenuBackgroundColor("light"); // Update menu background color
+        html_element.classList.add("light-theme");
         localStorage.setItem("bgc", white_color);
         localStorage.setItem("theme", "light");
         localStorage.setItem("nav_bgc", light_nav_bgc);
     }
 }
 
+function updateMenuBackgroundColor(theme) {
+    const media_query = window.matchMedia("(max-width: 768px)");
+    const menu_items = document.querySelector(".menu-items");
+
+    if (media_query.matches) {
+        if (theme === "dark") {
+            menu_items.style.backgroundColor = "#1d1d1daf"; // Dark theme for responsive mode
+        } else {
+            menu_items.style.backgroundColor = "#2e59889a"; // Light theme for responsive mode
+        }
+    } else {
+        menu_items.style.backgroundColor = "transparent"; // Reset to transparent for desktop mode
+    }
+}
+
 document.addEventListener("DOMContentLoaded", loadTheme);
+window.addEventListener("resize", () => {
+    const savedTheme = localStorage.getItem('theme') || "light"; // Default to light theme
+    updateMenuBackgroundColor(savedTheme);
+});

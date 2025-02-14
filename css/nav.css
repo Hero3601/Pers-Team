@@ -12,13 +12,24 @@ body {
     transition: background-color 0.3s ease-in-out;
 }
 
-html {
+html.light-theme {
     scrollbar-width: thin;
-    scrollbar-color: #473c319c #574a3d52;
+    scrollbar-color: black white;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
+    transition: scrollbar-color 0.5s ease-in-out;
+}
+
+html.dark-theme {
+    scrollbar-width: thin;
+    scrollbar-color: white black;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    transition: scrollbar-color 0.5s ease-in-out;
 }
 
 .parent-of-all {
