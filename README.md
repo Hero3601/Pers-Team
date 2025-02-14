@@ -7,15 +7,15 @@
 **in this website you have to see those several things :**
 
 
-**1 ) Code Organization [=_________] 10%**
+**1 ) Code Organization [===_______] 30%**
 
-**2 ) Perfect Style [=_________] 5%**
+**2 ) Perfect Style [===_______] 25%**
 
-**3 ) Responsive Design 📱 [=_________] 10%**
+**3 ) Responsive Design 📱 [==________] 20%**
 
 **4 ) COOP Between Contributers [__________] 0%**
 
-**5 ) Continuity  ↗️ [==________] 20%**
+**5 ) Continuity  ↗️ [====______] 35%**
 
 
 **The Percentage will increase by 10 Everytime we achieve anything that could be mentioned from these 5 achievments**
