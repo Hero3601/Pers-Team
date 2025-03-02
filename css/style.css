@@ -144,3 +144,14 @@ html {
         font-size: 15px;
     }
 }
+
+@media (max-width:1190px) {
+    .imp-langs {
+        display: flex;
+        flex-flow: column-reverse nowrap;
+    }
+
+    .imp-langs > div {
+        width: 80%;
+    }
+}
