@@ -89,10 +89,16 @@ html {
     border-radius: 30px;
     margin: 30px;
     height: 500px;
-    box-shadow: 0 0 10px var(--bgc);
+    box-shadow: 0 0 20px var(--bgc);
     background-color: var(--bgc);
     backdrop-filter: blur(50px);
-    transition: opacity 0.5s ease-in-out , transform 0.5s ease-in-out;
+    transform-style: preserve-3d;
+    transition: opacity 0.3s ease-in-out , transform 0.3s ease-in-out;
+}
+
+.imp-langs > div:hover {
+    transform: perspective(500px) rotateY(7deg) scale(1.06);
+    transition: 0.3s ease-in-out;
 }
 
 .imp-langs > div > div {

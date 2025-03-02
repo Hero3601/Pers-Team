@@ -32,6 +32,7 @@ function themetoggle() {
     const font_color_light = "white";
     const images = document.querySelectorAll(".image");
     const menu_items = document.querySelector(".menu-items");
+    const langs_parent = document.querySelectorAll(".parent-langs");
     const html_element = document.documentElement;
 
     if (toggle_btn.textContent.trim() === "Dark") {
@@ -42,6 +43,11 @@ function themetoggle() {
         nav.style.backgroundColor = dark_nav_bgc;
         nav.style.borderBottom = "0 solid transparent";
         nav.style.boxShadow = "0 0 0 transparent";
+
+        for (let langs of langs_parent) {
+            langs.style.backgroundColor = "#00000062";
+            langs.style.boxShadow = "0 0 20px #00000062";
+        }
 
         if (wraper_of_p_elements.length > 0) {
             for (let wraper_of_p of wraper_of_p_elements) {
@@ -62,6 +68,8 @@ function themetoggle() {
         localStorage.setItem("bgc", dark_color);
         localStorage.setItem("theme", "dark");
         localStorage.setItem("nav_bgc", dark_nav_bgc);
+        localStorage.setItem("langs_bgc", "#00000062"); // Save langs_parent background color
+        localStorage.setItem("langs_shadow", "0 0 20px #00000062"); // Save langs_parent box shadow
     } else {
         toggle_btn.textContent = "Dark";
         toggle_btn.style.color = "black";
@@ -81,6 +89,11 @@ function themetoggle() {
             }
         }
 
+        for (let langs of langs_parent) {
+            langs.style.backgroundColor = "#1162ad98";
+            langs.style.boxShadow = "0 0 20px #1162ad98";
+        }
+
         images.forEach(image => {
             image.style.filter = "drop-shadow(0 0 10px black)";
         });
@@ -90,6 +103,8 @@ function themetoggle() {
         localStorage.setItem("bgc", white_color);
         localStorage.setItem("theme", "light");
         localStorage.setItem("nav_bgc", light_nav_bgc);
+        localStorage.setItem("langs_bgc", "#1162ad98"); // Save langs_parent background color
+        localStorage.setItem("langs_shadow", "0 0 20px #1162ad98"); // Save langs_parent box shadow
     }
 }
 
@@ -105,6 +120,7 @@ function loadTheme() {
     const wraper_of_p_elements = document.getElementsByClassName("wraper-of-p");
     const images = document.querySelectorAll(".image");
     const menu_items = document.querySelector(".menu-items");
+    const langs_parent = document.querySelectorAll(".parent-langs");
     const html_element = document.documentElement;
 
     if (savedTheme) {
@@ -127,6 +143,11 @@ function loadTheme() {
                         element.style.textShadow = `0 0 6px white`;
                     }
                 }
+            }
+
+            for (let langs of langs_parent) {
+                langs.style.backgroundColor = localStorage.getItem("langs_bgc") || "#00000062";
+                langs.style.boxShadow = localStorage.getItem("langs_shadow") || "0 0 20px #00000062";
             }
 
             images.forEach(image => {
@@ -154,6 +175,11 @@ function loadTheme() {
                 }
             }
 
+            for (let langs of langs_parent) {
+                langs.style.backgroundColor = localStorage.getItem("langs_bgc") || "#1162ad98";
+                langs.style.boxShadow = localStorage.getItem("langs_shadow") || "0 0 20px #1162ad98";
+            }
+
             images.forEach(image => {
                 image.style.filter = "drop-shadow(0 0 10px black)";
             });
@@ -176,6 +202,11 @@ function loadTheme() {
             }
         }
 
+        for (let langs of langs_parent) {
+            langs.style.backgroundColor = "#1162ad98";
+            langs.style.boxShadow = "0 0 20px #1162ad98";
+        }
+
         images.forEach(image => {
             image.style.filter = "drop-shadow(0 0 10px black)";
         });
@@ -184,6 +215,8 @@ function loadTheme() {
         localStorage.setItem("bgc", white_color);
         localStorage.setItem("theme", "light");
         localStorage.setItem("nav_bgc", light_nav_bgc);
+        localStorage.setItem("langs_bgc", "#1162ad98"); // Save default langs_parent background color
+        localStorage.setItem("langs_shadow", "0 0 20px #1162ad98"); // Save default langs_parent box shadow
     }
 }
 
