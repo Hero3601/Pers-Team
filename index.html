@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="shortcut icon" href="imgs/faviocn.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/nav.css">
@@ -39,10 +40,49 @@
     </div>
 
     <div class="section">
-        <img src="imgs/laptop.png" alt="Laptop Image" class="laptop_image">
+        <img src="imgs/laptop.png" alt="Laptop Image" class="image">
         <div class="wraper-of-p">
             <p class="head">ابدأْ تَعَلُّمَ البَرْمَجَةِ</p>
             <p class="description">ابدأ تعلم البرمجة هي العبارة التي تفتح لك أبواب عالم التكنولوجيا والإبداع. البرمجة ليست مجرد كتابة أكواد، بل هي لغة العصر الحديث التي تمكنك من حل المشكلات، بناء التطبيقات، وتحويل الأفكار إلى واقع. سواء كنت مبتدئًا أو محترفًا، فإن تعلم البرمجة يمنحك مهارات قيمة تفتح لك فرصًا لا حدود لها في سوق العمل. ابدأ رحلتك اليوم، واستكشف لغات مثل بايثون أو جافا سكربت، وكن جزءًا من ثورة التكنولوجيا التي تشكل مستقبلنا.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <img src="imgs/team.png" alt="Team Image" class="image">
+        <div class="wraper-of-p">
+            <p class="head">فَريقُنا المُبدِعُ</p>
+            <p class="description">نتميز بالإبداع والدقة في العمل، ونحرص على تقديم حلول برمجية مبتكرة تلبي احتياجات عملائنا. سواء كنت تبحث عن تطوير تطبيقات ويب أو ألعاب أو برمجيات مخصصة، فإن فريقنا لديه الخبرة والمهارات اللازمة لتحقيق أهدافك.</p>
+        </div>
+    </div>
+
+    <div class="imp-langs">
+        <div class="parent-langs">
+            <p class="devicon-javascript-plain"></p>
+            <div class="gap-p">
+                <p class="head">جافا سكربت</p>
+                <p class="description">جافاسكربت هي لغة برمجة تُستخدم بشكل رئيسي لإضافة التفاعل إلى صفحات الويب. تتميز بسهولة تعلمها واستخدامها، مما يجعلها مثالية للمبتدئين. يمكن استخدام جافاسكربت لتطوير تطبيقات الويب، تطبيقات الهواتف، وحتى تطبيقات سطح المكتب. تتمتع بمجتمع ضخم ومكتبات غنية مثل "رياكت" و"فيو"، مما يجعل تطوير التطبيقات أسرع وأكثر كفاءة. بالإضافة إلى ذلك، تعمل جافاسكربت على كل من جانب العميل (المتصفح) وجانب الخادم (Node.js).</p>
+            </div>
+        </div>
+        <div class="parent-langs">
+            <p class="devicon-java-plain"></p>
+            <div class="gap-p">
+                <p class="head"></p>
+                <p class="description"></p>
+            </div>
+        </div>
+        <div class="parent-langs">
+            <p class="devicon-ruby-plain"></p>
+            <div class="gap-p">
+                <p class="head"></p>
+                <p class="description"></p>
+            </div>
+        </div>
+        <div class="parent-langs">
+            <p class="devicon-csharp-plain"></p>
+            <div class="gap-p">
+                <p class="head"></p>
+                <p class="description"></p>
+            </div>
         </div>
     </div>
 
@@ -53,38 +93,29 @@
         <a href="links/footer/tsma/index.html">وسائل تواصل الفريق</a>
     </div>
 </div>
-    <!-- 𝙾𝚏𝚏 /  𝙾𝚗 -->
-
     <script src="js/script.js"></script>
     <script>
-        document.addEventListener("visibilitychange", function() {
-            if (document.hidden) {
-                document.title = `𝙼𝚊𝚒𝚗 | 𝙿𝙸𝚃  [𝙾𝚏𝚏]`;
-            } else {
-                document.title = "𝙼𝚊𝚒𝚗 | 𝙿𝙸𝚃  [𝙾𝚗]";
-            }
-        });
-
-        document.addEventListener("DOMContentLoaded", function () {
-        const fadeElements = document.querySelectorAll(".section");
-
-        const observer = new IntersectionObserver(
+   document.addEventListener("DOMContentLoaded", function () {
+    const impLangsContainer = document.querySelector(".imp-langs");
+    const impLangsDivs = impLangsContainer ? impLangsContainer.querySelectorAll("div") : [];
+    const sectionElements = document.querySelectorAll(".section");
+    const fadeElements = [...sectionElements, ...impLangsDivs];
+    const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add("visible"); // Add class when visible
+                    entry.target.classList.add("visible");
                 } else {
-                    entry.target.classList.remove("visible"); // Remove class when not visible (optional)
+                    entry.target.classList.remove("visible");
                 }
             });
         },
         {
-            threshold: 0.5, // Trigger when 50% of the element is visible
+            threshold: 0.8,
         }
     );
-
     fadeElements.forEach((element) => {
-        observer.observe(element); // Observe each element
+        observer.observe(element);
     });
 });
     </script>
